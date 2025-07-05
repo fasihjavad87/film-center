@@ -1,0 +1,121 @@
+<svg data-v-0dd9719b="" version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="62" height="62"  preserveAspectRatio="xMidYMid meet"
+     color-interpolation-filters="sRGB" style="margin: auto;">
+    <g data-v-0dd9719b="" fill="#FD9248" class="icon-text-wrapper icon-svg-group iconsvg"
+      >
+        <g class="iconsvg-imagesvg"
+           mask="url(#5cd64bb8-1139-4816-a394-ebc4f76edd1e)" fill="#FD9248">
+            <g fill="#FD9248">
+                <rect fill="#FD9248" fill-opacity="0" stroke-width="2px" x="0" y="0" width="60" height="60"
+                      class="image-rect"></rect>
+                <svg filter="url(#colors4199332721)" x="0" y="0" width="60" height="60" filtersec="colorsf2904562944"
+                     class="image-svg-svg primary" style="overflow: visible;" fill="#FD9248">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.4 73.39999" fill="#FD9248">
+                        <path d="M36.7 36.7c-6.8 6.8-17.8 6.8-24.5 0-6.8-6.8-6.8-17.8 0-24.5 1.5-1.5 3.2-2.6 5-3.5l3.7 3.7M8.2 30.8H3c-.7 1.9-1 3.9-1 6 0 9.6 7.8 17.4 17.4 17.4s17.4-7.8 17.4-17.4M12.4 52.6l-3.7 3.7c.8 1.8 2 3.5 3.5 5 6.8 6.8 17.8 6.8 24.5 0 6.8-6.8 6.8-17.8 0-24.5m-5.9 28.4v5.2c1.9.7 3.9 1 6 1 9.6 0 17.4-7.8 17.4-17.4s-7.8-17.4-17.4-17.4m15.8 24.5l3.7 3.7c1.8-.8 3.5-2 5-3.5 6.8-6.8 6.8-17.8 0-24.5-6.8-6.8-17.8-6.8-24.5 0m28.4 5.9h5.2c.7-1.9 1-3.9 1-6 0-9.6-7.8-17.4-17.4-17.4-9.6 0-17.4 7.8-17.4 17.4m24.5-15.9l3.7-3.7c-.8-1.8-2-3.5-3.5-5-6.8-6.8-17.8-6.8-24.5 0-6.8 6.8-6.8 17.8 0 24.5m5.9-28.4V3c-1.9-.7-3.9-1-6-1-9.6 0-17.4 7.8-17.4 17.4 0 9.6 7.8 17.4 17.4 17.4"
+                              fill="none" stroke="#333333" stroke-width="4px" stroke-miterlimit="10"></path>
+                    </svg>
+                </svg>
+                <defs>
+                    <filter id="colors4199332721">
+                        <feColorMatrix type="matrix"
+                                       values="0 0 0 0 0.98828125  0 0 0 0 0.5703125  0 0 0 0 0.28125  0 0 0 1 0"
+                                       class="icon-fecolormatrix"></feColorMatrix>
+                    </filter>
+                    <filter id="colorsf2904562944">
+                        <feColorMatrix type="matrix"
+                                       values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0"
+                                       class="icon-fecolormatrix"></feColorMatrix>
+                    </filter>
+                    <filter id="colorsb9076127752">
+                        <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"
+                                       class="icon-fecolormatrix"></feColorMatrix>
+                    </filter>
+                    <linearGradient x1="0" y1="1" x2="0" y2="0" id="6zG0uMaZdAskV6OzJMCX_">
+                        <stop offset="0%" stop-color="#fd9248"></stop>
+                        <stop offset="50%" stop-color="#fa1768"></stop>
+                        <stop offset="100%" stop-color="#f001ff"></stop>
+                    </linearGradient>
+                    <linearGradient x1="0" y1="1" x2="0" y2="0" id="d68c51c0-efe7-4744-acc1-7c8ebd071afa">
+                        <stop offset="0%" stop-color="#fd9248"></stop>
+                        <stop offset="50%" stop-color="#fa1768"></stop>
+                        <stop offset="100%" stop-color="#f001ff"></stop>
+                    </linearGradient>
+                    <linearGradient x1="0" y1="1" x2="0" y2="0" id="d68c51c0-efe7-4744-acc1-7c8ebd071afa">
+                        <stop offset="0%" stop-color="#fd9248"></stop>
+                        <stop offset="50%" stop-color="#fa1768"></stop>
+                        <stop offset="100%" stop-color="#f001ff"></stop>
+                    </linearGradient>
+                    <linearGradient x1="0" y1="1" x2="0" y2="0" id="d68c51c0-efe7-4744-acc1-7c8ebd071afa">
+                        <stop offset="0%" stop-color="#fd9248"></stop>
+                        <stop offset="50%" stop-color="#fa1768"></stop>
+                        <stop offset="100%" stop-color="#f001ff"></stop>
+                    </linearGradient>
+                    <linearGradient x1="0" y1="1" x2="0" y2="0" id="d68c51c0-efe7-4744-acc1-7c8ebd071afa">
+                        <stop offset="0%" stop-color="#fd9248"></stop>
+                        <stop offset="50%" stop-color="#fa1768"></stop>
+                        <stop offset="100%" stop-color="#f001ff"></stop>
+                    </linearGradient>
+                </defs>
+            </g>
+            <rect v-gra="id" width="72" height="72" transform="translate(-6, -6)" style="pointer-events:none;"
+                  fill="url(&quot;#6zG0uMaZdAskV6OzJMCX_&quot;)"></rect>
+        </g>
+    </g>
+    <defs v-gra="od">
+        <linearGradient x1="0" y1="1" x2="0" y2="0" id="d68c51c0-efe7-4744-acc1-7c8ebd071afa">
+            <stop offset="0%" stop-color="#fd9248"></stop>
+            <stop offset="50%" stop-color="#fa1768"></stop>
+            <stop offset="100%" stop-color="#f001ff"></stop>
+        </linearGradient>
+        <filter id="42443b3f1de60f6b6fd3b6a9844b4764" filterUnits="objectBoundingBox">
+            <feColorMatrix type="matrix"
+                           values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <defs v-gra="id">
+        <filter id="3484825d-5743-4bec-8d37-09257018730a" filterUnits="userSpaceOnUse">
+            <feColorMatrix type="matrix"
+                           values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0"></feColorMatrix>
+        </filter>
+        <linearGradient x1="0" y1="1" x2="0" y2="0" id="6zG0uMaZdAskV6OzJMCX_">
+            <stop offset="0%" stop-color="#fd9248"></stop>
+            <stop offset="50%" stop-color="#fa1768"></stop>
+            <stop offset="100%" stop-color="#f001ff"></stop>
+        </linearGradient>
+        <filter id="42443b3f1de60f6b6fd3b6a9844b4764" filterUnits="objectBoundingBox">
+            <feColorMatrix type="matrix"
+                           values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <mask v-gra="im" id="5cd64bb8-1139-4816-a394-ebc4f76edd1e">
+        <g class="iconsvg-imagesvg" filter="url(#3484825d-5743-4bec-8d37-09257018730a)">
+            <g>
+                <rect fill="#FD9248" fill-opacity="0" stroke-width="2px" x="0" y="0" width="60" height="60"
+                      class="image-rect"></rect>
+                <svg x="0" y="0" width="60" height="60" filtersec="colorsf2904562944" class="image-svg-svg primary"
+                     style="overflow: visible;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.4 73.39999">
+                        <path d="M36.7 36.7c-6.8 6.8-17.8 6.8-24.5 0-6.8-6.8-6.8-17.8 0-24.5 1.5-1.5 3.2-2.6 5-3.5l3.7 3.7M8.2 30.8H3c-.7 1.9-1 3.9-1 6 0 9.6 7.8 17.4 17.4 17.4s17.4-7.8 17.4-17.4M12.4 52.6l-3.7 3.7c.8 1.8 2 3.5 3.5 5 6.8 6.8 17.8 6.8 24.5 0 6.8-6.8 6.8-17.8 0-24.5m-5.9 28.4v5.2c1.9.7 3.9 1 6 1 9.6 0 17.4-7.8 17.4-17.4s-7.8-17.4-17.4-17.4m15.8 24.5l3.7 3.7c1.8-.8 3.5-2 5-3.5 6.8-6.8 6.8-17.8 0-24.5-6.8-6.8-17.8-6.8-24.5 0m28.4 5.9h5.2c.7-1.9 1-3.9 1-6 0-9.6-7.8-17.4-17.4-17.4-9.6 0-17.4 7.8-17.4 17.4m24.5-15.9l3.7-3.7c-.8-1.8-2-3.5-3.5-5-6.8-6.8-17.8-6.8-24.5 0-6.8 6.8-6.8 17.8 0 24.5m5.9-28.4V3c-1.9-.7-3.9-1-6-1-9.6 0-17.4 7.8-17.4 17.4 0 9.6 7.8 17.4 17.4 17.4"
+                              fill="none" stroke="#333333" stroke-width="4px" stroke-miterlimit="10"></path>
+                    </svg>
+                </svg>
+                <defs>
+                    <filter id="colors4199332721">
+                        <feColorMatrix type="matrix"
+                                       values="0 0 0 0 0.98828125  0 0 0 0 0.5703125  0 0 0 0 0.28125  0 0 0 1 0"
+                                       class="icon-fecolormatrix"></feColorMatrix>
+                    </filter>
+                    <filter id="colorsf2904562944">
+                        <feColorMatrix type="matrix"
+                                       values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0"
+                                       class="icon-fecolormatrix"></feColorMatrix>
+                    </filter>
+                    <filter id="colorsb9076127752">
+                        <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"
+                                       class="icon-fecolormatrix"></feColorMatrix>
+                    </filter>
+                </defs>
+            </g>
+        </g>
+    </mask>
+</svg>
