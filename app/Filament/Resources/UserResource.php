@@ -122,6 +122,7 @@ class UserResource extends Resource
                     ->sortable(),
 
             ])
+            ->recordUrl(null)
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
