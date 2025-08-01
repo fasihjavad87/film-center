@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 
 class Category extends Model
@@ -31,4 +32,15 @@ class Category extends Model
             }
         });
     }
+
+    public function movies(): MorphToMany
+    {
+        return $this->morphedByMany(Movies::class, 'movieable', 'categorizables');
+    }
+
+//    public function series(): MorphToMany
+//    {
+//        return $this->morphedByMany(Series::class, 'movieable', 'categorizables');
+//    }
+
 }

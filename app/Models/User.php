@@ -69,7 +69,7 @@ class User extends Authenticatable implements  HasAvatar
             : 'کاربر';
     }
 
-    protected static function booted()
+    protected static function booted(): void
     {
         parent::booted();
 
