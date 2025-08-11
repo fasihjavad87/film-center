@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\MoviesStatus;
+use App\Enums\SeriesStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,16 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('movies', function (Blueprint $table) {
+        Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
             $table->string('e_name');
             $table->string('slug');
-            $table->string('status')->default(MoviesStatus::Active->value);
-            $table->unsignedSmallInteger('runtime')->nullable();
-            $table->string('movie_url', 500)->nullable();
-            $table->string('movie_file')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('movies');
+        Schema::dropIfExists('series');
     }
 };

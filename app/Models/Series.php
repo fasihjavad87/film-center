@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-
 use App\Enums\MoviesStatus;
+use App\Enums\SeriesStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -11,23 +11,18 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class Movies extends Model
+class Series extends Model
 {
     protected $fillable = [
         'title',
         'description',
         'e_name',
         'slug',
-        'status',
-        'runtime',
-        'movie_url',
-        'movie_file'
     ];
-
 
     public function statusLabel(): string
     {
-        return MoviesStatus::from($this->status)->label();
+        return SeriesStatus::from($this->status)->label();
     }
 
     // تابعی که می‌خوایم برای ساخت خودکار اسلاگ
@@ -52,11 +47,11 @@ class Movies extends Model
             }
         });
 
-        static::updated(function ($movie) {
+        static::updated(function ($series) {
             // فقط اگر رابطه details لود شده باشد
-            if ($movie->relationLoaded('details') && $movie->details) {
-                $currentPoster = $movie->details->poster;
-                $originalDetails = $movie->details->getOriginal();
+            if ($series->relationLoaded('details') && $series->details) {
+                $currentPoster = $series->details->poster;
+                $originalDetails = $series->details->getOriginal();
 
                 if (isset($originalDetails['poster']) &&
                     $originalDetails['poster'] !== $currentPoster &&
@@ -66,20 +61,25 @@ class Movies extends Model
             }
         });
 
-        static::deleting(function ($movie) {
-            if ($movie->details) {
+        static::deleting(function ($series) {
+            if ($series->details) {
                 // حذف پوستر از storage
-                if ($movie->details->poster) {
-                    Storage::disk('filament')->delete($movie->details->poster);
+                if ($series->details->poster) {
+                    Storage::disk('filament')->delete($series->details->poster);
                 }
 
                 // حذف رکورد جزئیات
-                $movie->details->delete();
+                $series->details->delete();
             }
         });
 
     }
 
+
+    public function seasons()
+    {
+        return $this->hasMany(Season::class);
+    }
 
     public function categories(): MorphToMany
     {
@@ -100,6 +100,5 @@ class Movies extends Model
     {
         return $this->morphToMany(Countries::class, 'movieable', 'country_moviedetail', 'movieable_id', 'country_id');
     }
-
 
 }

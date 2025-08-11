@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Facades\Storage;
 
 class MovieDetail extends Model
 {
@@ -15,7 +16,6 @@ class MovieDetail extends Model
         'imdb_rating',
         'release_year',
         'language',
-        'runtime',
         'age_rating',
         'poster'
     ];
@@ -25,6 +25,17 @@ class MovieDetail extends Model
         return $this->morphTo();
     }
 
-
+// در مدل MovieDetail
+    protected static function booted(): void
+    {
+        static::updating(function ($detail) {
+            if ($detail->isDirty('poster')) {
+                $oldPoster = $detail->getOriginal('poster');
+                if ($oldPoster) {
+                    Storage::disk('filament')->delete($oldPoster);
+                }
+            }
+        });
+    }
 
 }

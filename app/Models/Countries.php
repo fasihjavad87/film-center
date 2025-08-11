@@ -19,10 +19,10 @@ class Countries extends Model
         return $this->morphedByMany(Movies::class, 'movieable', 'country_moviedetail');
     }
 
-//    public function seriesables(): MorphToMany
-//    {
-//        return $this->morphedByMany(Series::class, 'movieable', 'country_moviedetail');
-//    }
+    public function seriesables(): MorphToMany
+    {
+        return $this->morphedByMany(Series::class, 'movieable', 'country_moviedetail');
+    }
 
 
 }

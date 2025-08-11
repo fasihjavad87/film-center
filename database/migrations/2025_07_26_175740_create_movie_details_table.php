@@ -19,7 +19,6 @@ return new class extends Migration
             $table->decimal('imdb_rating', 3, 1)->nullable();
             $table->integer('release_year')->nullable();
             $table->string('language', 50)->nullable();
-            $table->unsignedSmallInteger('runtime')->nullable();
             $table->string('age_rating', 10)->nullable();
             $table->string('poster')->nullable();
             $table->timestamps();

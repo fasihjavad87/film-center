@@ -2,14 +2,13 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MovieResource\Pages;
-use App\Filament\Resources\MovieResource\RelationManagers;
-use App\Models\Movie;
-use App\Models\Movies;
+use App\Filament\Resources\SeasonRelationResource\RelationManagers\SeasonsRelationManager;
+use App\Filament\Resources\SeriesResource\Pages;
+use App\Filament\Resources\SeriesResource\RelationManagers;
+use App\Filament\Resources\TrailerRelationResource\RelationManagers\TrailersRelationManager;
+use App\Models\Series;
 use Filament\Forms;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -17,22 +16,20 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use function Laravel\Prompts\textarea;
 
-class MovieResource extends Resource
+class SeriesResource extends Resource
 {
-    protected static ?string $model = Movies::class;
+    protected static ?string $model = Series::class;
 
-    protected static ?string $navigationLabel = 'فیلم ها';
-    protected static ?string $pluralModelLabel = 'فیلم ها';
-    protected static ?string $modelLabel = 'فیلم';
+    protected static ?string $navigationLabel = 'سریال ها';
+    protected static ?string $pluralModelLabel = 'سریال ها';
+    protected static ?string $modelLabel = 'سریال';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -51,20 +48,8 @@ class MovieResource extends Resource
                         ->unique(ignoreRecord: true)
                         ->hint('به صورت خودکار از نام انگلیسی تولید می‌شود')
                         ->required(),
-                    Select::make('status')
-                        ->label('وضعیت')
-                        ->options([
-                            'active' => 'فعال',
-                            'inactive' => 'غیرفعال',
-                        ])
-                        ->default('active')
-                        ->required(),
                     textarea::make('description')
                         ->label('توضیحات')
-                        ->required(),
-                    TextInput::make('runtime')
-                        ->numeric()->label('مدت زمان')
-                        ->suffix('دقیقه')
                         ->required(),
                 ])->columns(2),
             Section::make('دسته بندی و کشور')
@@ -84,41 +69,6 @@ class MovieResource extends Resource
                         ->required()
                         ->relationship('countries', 'name_fa'),
                 ])->columns(2),
-            Section::make('منبع فیلم')
-                ->schema([
-                    Radio::make('source_type')
-                        ->label('نوع منبع')
-                        ->options([
-                            'url' => 'لینک',
-                            'file' => 'آپلود فایل',
-                        ])
-                        ->default('url')
-                        ->inline()
-                        ->reactive()
-                        ->afterStateHydrated(function (Radio $component, $state, $record) {
-                            // اگر رکورد وجود دارد و movie_url مقدار دارد
-                            if ($record && $record->movie_url) {
-                                $component->state('url');
-                            } // اگر رکورد وجود دارد و movie_file مقدار دارد
-                            elseif ($record && $record->movie_file) {
-                                $component->state('file');
-                            }
-                        }),
-
-                    TextInput::make('movie_url')
-                        ->label('لینک فیلم')
-                        ->visible(fn($get) => $get('source_type') === 'url')
-                        ->nullable(),
-
-                    FileUpload::make('movie_file')
-                        ->label('آپلود فیلم')
-                        ->visible(fn($get) => $get('source_type') === 'file')
-                        ->disk('filament')
-                        ->directory('movies')
-                        ->nullable()
-                        ->dehydrated(fn($state) => $state !== null),
-                ]),
-
             Section::make('اطلاعات تکمیلی')
                 ->relationship('details')
                 ->schema([
@@ -147,7 +97,7 @@ class MovieResource extends Resource
                         ->label('پوستر')
                         ->image()
                         ->disk('filament')
-                        ->directory('poster_movies')
+                        ->directory('poster_series')
                         ->visibility('public')
                         ->required()
                         ->imagePreviewHeight('100')
@@ -158,7 +108,6 @@ class MovieResource extends Resource
         ]);
     }
 
-
     public static function table(Table $table): Table
     {
         return $table
@@ -166,15 +115,6 @@ class MovieResource extends Resource
                 TextColumn::make('title')->label('عنوان')->searchable(),
                 TextColumn::make('e_name')->label('نام انگلیسی')->searchable(),
                 TextColumn::make('slug')->label('نشانی'),
-                TextColumn::make('status')
-                    ->badge()
-                    ->label('وضعیت')
-                    ->formatStateUsing(fn($state, $record) => $record->statusLabel())
-                    ->color(fn(string $state): string => match ($state) {
-                        'active' => 'success',
-                        'inactive' => 'danger',
-                        default => 'secondary'
-                    }),
                 TextColumn::make('created_at')->label('تاریخ ایجاد')
                     ->formatStateUsing(fn($state) => (new Verta($state))->format('Y/m/d'))
                     ->sortable(),
@@ -196,16 +136,17 @@ class MovieResource extends Resource
     public static function getRelations(): array
     {
         return [
-            \App\Filament\Resources\TrailerRelationResource\RelationManagers\TrailersRelationManager::class,
+            SeasonsRelationManager::class,
+            TrailersRelationManager::class
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMovies::route('/'),
-            'create' => Pages\CreateMovie::route('/create'),
-            'edit' => Pages\EditMovie::route('/{record}/edit'),
+            'index' => Pages\ListSeries::route('/'),
+            'create' => Pages\CreateSeries::route('/create'),
+            'edit' => Pages\EditSeries::route('/{record}/edit'),
         ];
     }
 }
