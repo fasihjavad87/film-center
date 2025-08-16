@@ -11,9 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
 //            Route Admin
-            Route::prefix('admin')
+            Route::prefix('user')
                 ->middleware(['web', 'auth'])
-                ->group(base_path('routes/admin.php'));
+                ->group(base_path('routes/panel.php'));
 
 //            Route Auth
             Route::middleware(['web'])->group(base_path('routes/auth.php'));

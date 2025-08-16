@@ -1,5 +1,6 @@
+/*@import "Vazirmatn-font-face.css";*/
 @import 'tailwindcss';
-
+@custom-variant dark (&:where(.dark, .dark *));
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -8,4 +9,40 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --spacing-app-sidebar-w: 18rem;
+    --spacing-app-header-h: 4rem;
+    --spacing-30: 30px;
+    --spacing-3px: 3px;
+    --spacing-btn: 40px;
+    --spacing-1px: 1px;
+
+    --text-10: 10px;
+    --color-yellow-c: #ffcc00;
+    --color-blue-c: #3e7bfa;
+    --color-black-c: #191919;
+    --color-green-c: #23ad2c;
+    --color-border-c: oklch(92.95% .0108 280.47);
+    --color-border-b-c: oklch(0.57 0.17 254.86 / 0.93);
+}
+
+*{
+    font-family: Vazirmatn FD;
+}
+a{
+    cursor: pointer;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.panel-user-item-sidebar{
+    @apply flex items-center gap-x-2.5 border border-border-c hover:border-blue-c dark:hover:border-yellow-c text-blue-c dark:text-white dark:hover:text-yellow-c hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors;
+}
+.panel-user-item-sidebar-power{
+    @apply flex items-center gap-x-2.5 hover:bg-red-500/10 text-red-500 p-2 rounded-lg transition-colors;
+}
+.panel-user-item-sidebar-active{
+    @apply border-blue-c dark:border-yellow-c text-blue-c dark:text-yellow-c bg-gray-50 dark:bg-gray-800 ;
 }

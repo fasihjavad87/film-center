@@ -57,6 +57,7 @@ class EpisodeResource extends Resource
                             ->required(fn() => request()->routeIs('filament.admin.resources.episodes.create'))
 //                            ->visible(fn() => request()->routeIs('filament.admin.resources.episodes.create'))
                             ->disabled(fn() => request()->routeIs('filament.admin.resources.episodes.edit')),
+
                     ])->columns(2),
                 Section::make('اطلاعات قسمت')
                     ->schema([
