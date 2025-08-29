@@ -26,7 +26,7 @@
             <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-payment-history"></use>
                     </svg> <span class="pt-3px">سوابق خرید</span></a></li>
-            <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panel.tickets.index') }}" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-ticket"></use>
                     </svg> <span class="pt-3px">تیکت ها</span></a></li>
             <li><a href="#" class="panel-user-item-sidebar justify-between"><div class="flex gap-x-2.5"><svg class="w-6 h-6 fill-transparent">

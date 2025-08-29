@@ -14,6 +14,8 @@
     --spacing-app-header-h: 4rem;
     --spacing-30: 30px;
     --spacing-3px: 3px;
+    --spacing-18px: 18px;
+    --spacing-22px: 22px;
     --spacing-btn: 40px;
     --spacing-1px: 1px;
 
@@ -45,4 +47,221 @@ a{
 }
 .panel-user-item-sidebar-active{
     @apply border-blue-c dark:border-yellow-c text-blue-c dark:text-yellow-c bg-gray-50 dark:bg-gray-800 ;
+}
+
+.badge-custom-panel-form{
+    @apply border-[1.4px] py-0.5 font-medium rounded-md ;
+}
+
+
+@keyframes slide-in-out {
+    0% { width: 100%; }
+    100% { width: 0%; }
+}
+.animate-slide-in-out {
+    animation-name: slide-in-out;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+/* style global checkbox*/
+.checkbox-container {
+    @apply flex items-center ;
+    /*display: flex;*/
+    /*align-items: center;*/
+}
+
+.custom-checkbox {
+    @apply hidden ;
+    /*display: none; */
+}
+
+.checkbox-label {
+    @apply flex items-center cursor-pointer ;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*cursor: pointer;*/
+}
+
+.checkmark {
+    @apply w-5 h-5 border-2 border-border-c rounded-sm ml-3px flex items-center justify-center ;
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*border: 2px solid #d1d5db;*/
+    /*border-radius: 4px;*/
+    /*margin-left: 3px;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    transition: all 0.2s;
+}
+
+.custom-checkbox:checked + .checkbox-label .checkmark {
+    @apply bg-blue-c dark:bg-yellow-c border-blue-c dark:border-yellow-c ;
+    /*background-color: #5867dd;*/
+    /*border-color: #5867dd;*/
+}
+
+.custom-checkbox:checked + .checkbox-label .checkmark i {
+    @apply block text-white dark:text-black ;
+    /*color: white;*/
+    /*display: block;*/
+}
+
+.checkbox-label .checkmark i {
+    @apply hidden text-base ;
+    /*display: none;*/
+    /*font-size: 12px;*/
+}
+
+.text {
+    @apply text-black dark:text-white mr-1 ;
+    /*color: #4b5563;*/
+    /*margin-right: 4px;*/
+    user-select: none;
+}
+
+.checkbox-label:hover .checkmark {
+    @apply border-blue-c dark:border-yellow-c ;
+    /*border-color: #5867dd;*/
+}
+
+
+.card {
+    @apply bg-white dark:bg-gray-800 shadow rounded-lg;
+}
+
+.card-body {
+    @apply p-6 overflow-x-auto;
+}
+
+.search {
+    @apply flex flex-col sm:flex-row sm:items-center gap-4 mb-6;
+
+    .label-search {
+        @apply sm:w-1/5 font-medium text-black dark:text-white ;
+    }
+
+    .input-search {
+        @apply w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-right;
+    }
+}
+
+.parent-table {
+    @apply rounded-md ;
+
+    .box-table {
+        @apply min-w-full table-auto text-sm text-gray-700;
+
+        .table-head {
+            @apply bg-gray-200 dark:bg-yellow-c dark:text-black text-gray-600;
+        }
+
+        & th {
+            @apply text-center p-3;
+        }
+
+        .table-item {
+            @apply border-b odd:bg-white even:bg-gray-50 hover:bg-gray-100 ;
+
+            & td {
+                @apply text-center p-3 align-middle;
+            }
+        }
+    }
+}
+
+.table-avatar {
+    @apply w-10 h-10 rounded-full object-cover;
+}
+
+.table-button {
+    @apply inline-block px-3 py-1 border transition duration-200;
+}
+
+
+
+
+.custom-select-wrapper {
+    position: relative;
+    width: 300px;
+    font-family: Arial, sans-serif;
+}
+
+.custom-select-ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    min-height: 40px;
+}
+
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    min-height: 24px; /* برای جلوگیری از تغییر ارتفاع */
+}
+
+.selected-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.selected-tag {
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    padding: 4px 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.remove-tag {
+    margin-left: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-input {
+    flex-grow: 1; /* این باعث میشه فیلد جستجو باقی فضای خالی رو پر کنه */
+    border: none;
+    outline: none;
+    padding: 4px 0;
+    font-size: 14px;
+    background: transparent;
+}
+
+.toggle-button svg {
+    width: 16px;
+    height: 16px;
+    color: #888;
+}
+
+.options-container {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px); /* قرار گرفتن در پایین فیلد اصلی */
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.option-item {
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.option-item:hover, .option-item.selected {
+    background-color: #f0f0f0;
 }
