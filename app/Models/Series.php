@@ -20,10 +20,13 @@ class Series extends Model
         'slug',
     ];
 
-    public function statusLabel(): string
-    {
-        return SeriesStatus::from($this->status)->label();
-    }
+//    public function statusLabel(): string
+//    {
+//        return SeriesStatus::from($this->status)->label();
+//    }
+
+
+
 
     // تابعی که می‌خوایم برای ساخت خودکار اسلاگ
     public static function generateSlug($eName): string
@@ -71,6 +74,17 @@ class Series extends Model
                 // حذف رکورد جزئیات
                 $series->details->delete();
             }
+
+            // حذف تریلرها
+            $series->trailers()->each(function ($trailer) {
+                $trailer->delete();
+            });
+
+            // حذف رکوردهای pivot از کشورها
+            $series->countries()->detach();
+
+            // حذف رکوردهای pivot از دسته‌بندی‌ها
+            $series->categories()->detach();
         });
 
     }

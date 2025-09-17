@@ -12,7 +12,7 @@
         id="{{ $name }}"
         name="{{ $name }}"
         {{ $attributes->class([
-             'mt-1 block w-full rounded-md px-2.5 py-2 font-light placeholder:text-black dark:placeholder:text-border-c text-black dark:text-white border-[1.4px] border-border-c dark:bg-gray-800 focus:border-blue-c dark:focus:border-yellow-c outline-none text-base cursor-pointer transition-colors'
+             'mt-1 block w-full rounded-md px-1.5 py-2 font-light placeholder:text-black dark:placeholder:text-border-c text-black dark:text-white border-[1.4px] border-border-c dark:bg-gray-800 focus:border-blue-c dark:focus:border-yellow-c outline-none text-base cursor-pointer transition-colors'
          ]) }}
         @if($required) required @endif
     >

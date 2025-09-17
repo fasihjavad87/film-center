@@ -21,17 +21,12 @@ class CountryList extends Component
 
     public function openDeleteModal($countryId)
     {
-        $this->showDeleteModal = true;
         $this->countryIdToDelete = $countryId;
+        $this->dispatch('show-delete-modal');
     }
-    public function closeDeleteModal()
-    {
-        $this->showDeleteModal = false;
-        $this->countryIdToDelete = null;
-    }
+
     public function delete()
     {
-        // منطق حذف
         $country = Countries::find($this->countryIdToDelete);
         if ($country) {
             $country->delete();
@@ -41,7 +36,7 @@ class CountryList extends Component
                 'duration' => 5000
             ]);
         }
-        $this->closeDeleteModal();
+        $this->dispatch('close-delete-modal');
         $this->resetPage();
     }
 

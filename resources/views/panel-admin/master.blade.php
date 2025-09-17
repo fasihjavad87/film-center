@@ -16,7 +16,7 @@
     x-transition.opacity
 ></div>
 
-<section class="fixed top-app-header-h left-0 w-full h-screen bg-white dark:bg-gray-700 dark:text-white md:pr-app-sidebar-w pb-app-header-h overflow-y-auto"><div class="p-5 md:p-7">
+<section class="fixed left-0 w-full h-screen bg-white overflow-y-auto dark:bg-gray-700 dark:text-white md:pr-app-sidebar-w pb-app-header-h top-app-header-h"><div class="p-5 md:p-7">
         {{$slot}}
     </div></section>
 @livewire('user-admin.sidebar')

@@ -13,26 +13,18 @@ class UserSoftDelete extends Component
 
     use WithPagination;
 
-    // پراپرتی‌ها برای مدیریت پاپ‌آپ حذف
-    public $showDeleteModal = false; // برای پاپ‌آپ حذف دائم
     public $showRestoreModal = false; // برای پاپ‌آپ بازگردانی
     public $userIdToDelete = null; // برای حذف دائم
     public $userIdToRestore = null; // برای بازگردانی
     public $search = '';
 
+
     public function openDeleteModal($userId)
     {
-        $this->showDeleteModal = true;
         $this->userIdToDelete = $userId;
+        $this->dispatch('show-delete-modal');
     }
 
-    public function closeDeleteModal()
-    {
-        $this->showDeleteModal = false;
-        $this->userIdToDelete = null;
-    }
-
-    // متد برای حذف دائمی کاربر
     public function forceDelete()
     {
         $user = User::onlyTrashed()->find($this->userIdToDelete);
@@ -46,19 +38,14 @@ class UserSoftDelete extends Component
                 'duration' => 5000
             ]);
         }
-
-        $this->closeDeleteModal();
+        $this->dispatch('close-delete-modal');
+        $this->resetPage();
     }
+
     public function openRestoreModal($userId)
     {
-        $this->showRestoreModal = true;
         $this->userIdToRestore = $userId;
-    }
-
-    public function closeRestoreModal()
-    {
-        $this->showRestoreModal = false;
-        $this->userIdToRestore = null;
+        $this->dispatch('show-restore-modal');
     }
 
     public function restore()
@@ -72,10 +59,9 @@ class UserSoftDelete extends Component
                 'message' => 'کاربر با موفقیت بازیابی شد.',
                 'duration' => 5000
             ]);
-            $this->resetPage();
         }
-
-        $this->closeRestoreModal();
+        $this->dispatch('close-restore-modal');
+        $this->resetPage();
     }
 
 

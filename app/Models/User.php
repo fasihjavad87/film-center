@@ -52,6 +52,7 @@ class User extends Authenticatable implements  HasAvatar
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
 
@@ -127,4 +128,15 @@ class User extends Authenticatable implements  HasAvatar
     {
         return asset('uploads/' . $this->avatar);
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Tickets::class, 'user_id'); // تیکت‌هایی که باز کرده
+    }
+
+    public function assignedTickets()
+    {
+        return $this->hasMany(Tickets::class, 'assigned_to'); // تیکت‌هایی که بهش ارجاع داده شده
+    }
+
 }

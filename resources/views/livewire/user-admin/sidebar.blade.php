@@ -17,16 +17,28 @@
     </div>
     <div class="px-2.5 py-5" dir="rtl">
         <ul class="flex flex-col gap-y-2.5">
-            <li><a href="{{ route('panelAdmin.users.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.users.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panelAdmin.users.index') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.users.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-user"></use>
                     </svg> <span class="pt-3px">کاربران</span></a></li>
-            <li><a href="{{ route('panelAdmin.categories.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.categories.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panelAdmin.categories.index') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.categories.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-library"></use>
                     </svg> <span class="pt-3px">دسته بندی ها</span></a></li>
-            <li><a href="{{ route('panelAdmin.countries.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.countries.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panelAdmin.countries.index') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.countries.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-global"></use>
                     </svg> <span class="pt-3px">کشور ها</span></a></li>
-            <li><a href="#" class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.dashboard') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panelAdmin.movies.index') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.movies.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+                        <use xlink:href="#icon-video-frame-play-horizontal"></use>
+                    </svg> <span class="pt-3px">فیلم ها</span></a></li>
+            <li><a href="{{ route('panelAdmin.series.index') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.series.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+                        <use xlink:href="#icon-video-frame-play-vertical"></use>
+                    </svg> <span class="pt-3px">سریال ها</span></a></li>
+            <li><a href="{{ route('panelAdmin.seasons.index') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.seasons.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+                        <use xlink:href="#icon-library"></use>
+                    </svg> <span class="pt-3px">فصل ها</span></a></li>
+            <li><a href="{{ route('panelAdmin.tickets.index') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.tickets.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
+                        <use xlink:href="#icon-library"></use>
+                    </svg> <span class="pt-3px">تیکت ها</span></a></li>
+            <li><a href="{{ route('panelAdmin.dashboard') }}" wire:navigate class="panel-user-item-sidebar {{ request()->routeIs('panelAdmin.dashboard') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-dashboard"></use>
                     </svg> <span class="pt-3px">داشبورد</span></a></li>
 {{--            <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">--}}

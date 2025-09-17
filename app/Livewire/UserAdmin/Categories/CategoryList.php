@@ -14,24 +14,45 @@ class CategoryList extends Component
     use WithPagination;
 
     public $search = '';
-    public $showDeleteModal = false;
+//    public $showDeleteModal = false;
     public $categoryIdToDelete = null;
 
 
 
+//    public function openDeleteModal($categoryId)
+//    {
+//        $this->showDeleteModal = true;
+//        $this->categoryIdToDelete = $categoryId;
+//    }
+//    public function closeDeleteModal()
+//    {
+//        $this->showDeleteModal = false;
+//        $this->categoryIdToDelete = null;
+//    }
+//    public function delete()
+//    {
+//        // منطق حذف
+//        $category = Category::find($this->categoryIdToDelete);
+//        if ($category) {
+//            $category->delete();
+//
+//            $this->dispatch('toast-notification', [
+//                'message' => 'دسته بندی حذف شد.',
+//                'duration' => 5000
+//            ]);
+//        }
+//        $this->closeDeleteModal();
+//        $this->resetPage();
+//    }
+
     public function openDeleteModal($categoryId)
     {
-        $this->showDeleteModal = true;
         $this->categoryIdToDelete = $categoryId;
+        $this->dispatch('show-delete-modal');
     }
-    public function closeDeleteModal()
-    {
-        $this->showDeleteModal = false;
-        $this->categoryIdToDelete = null;
-    }
+
     public function delete()
     {
-        // منطق حذف
         $category = Category::find($this->categoryIdToDelete);
         if ($category) {
             $category->delete();
@@ -41,7 +62,7 @@ class CategoryList extends Component
                 'duration' => 5000
             ]);
         }
-        $this->closeDeleteModal();
+        $this->dispatch('close-delete-modal');
         $this->resetPage();
     }
 

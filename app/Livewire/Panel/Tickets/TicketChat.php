@@ -3,12 +3,12 @@
 namespace App\Livewire\Panel\Tickets;
 
 use App\Models\Tickets;
+use App\Models\TicketMessage;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\TicketMessage;
-use Illuminate\Support\Facades\Auth;
 
 class TicketChat extends Component
 {
@@ -16,54 +16,60 @@ class TicketChat extends Component
 
     public Tickets $ticket;
     public string $message = '';
-    public array $files = [];
-    public int $perPage = 30;
+    public $files;
 
     protected $rules = [
-        'message' => 'nullable|string|max:4000',
-        'files.*' => 'file|max:5120',
+        'message' => 'string|max:4000',
+        'files'   => 'nullable|image|mimes:png,jpg,jpeg,webp|max:700',
     ];
 
-    public function mount(Tickets $ticket): void
+    public function mount($ticketId): void
     {
+        $ticket = Tickets::with(['messages.sender', 'user'])->findOrFail($ticketId);
+
+        // فقط کاربر صاحب تیکت اجازه دسترسی داشته باشه
         if ($ticket->user_id !== Auth::id()) {
-            abort(403); // کاربر اجازه نداره تیکت دیگران رو ببینه
+            abort(403, 'شما مجاز به مشاهده این تیکت نیستید.');
         }
 
-        $this->ticket = $ticket->load('messages');
+        $this->ticket = $ticket->load('messages.sender');
         $this->markAsRead();
     }
 
+    // 🟢 ارسال پیام
     public function send(): void
     {
         $this->validate();
 
-        if (blank($this->message) && empty($this->files)) return;
+        if (blank($this->message) && empty($this->files)) {
+            return;
+        }
 
-        $attachments = [];
-        foreach ($this->files as $file) {
-            $attachments[] = [
-                'path' => $file->store('tickets', 'public'),
-                'name' => $file->getClientOriginalName(),
-                'size' => $file->getSize(),
-                'mime' => $file->getMimeType(),
-            ];
+        $filePath = null;
+        if ($this->files) {
+            $filePath = $this->files->store('ticket_attachments', 'public');
         }
 
         TicketMessage::create([
-            'ticket_id' => $this->ticket->id,
-            'sender_id' => Auth::id(),
-            'message' => $this->message,
-            'attachments' => $attachments ?: null,
+            'ticket_id'  => $this->ticket->id,
+            'sender_id'  => Auth::id(),
+            'message'    => $this->message,
+            'attachments'=> $filePath,
+            'read_at'    => null,
         ]);
 
-        $this->ticket->update(['status' => 'pending', 'last_reply_at' => now()]);
+        $this->ticket->update([
+            'status' => 'pending',
+            'last_reply_at' => now(),
+        ]);
 
-        $this->reset(['message','files']);
+        $this->reset(['message', 'files']);
+        $this->ticket->load('messages.sender');
 
-        $this->ticket->load('messages');
+        $this->dispatch('scrollToBottom');
     }
 
+    // 🟢 خوانده شدن پیام‌های مدیر توسط کاربر
     public function markAsRead(): void
     {
         TicketMessage::where('ticket_id', $this->ticket->id)
@@ -73,7 +79,7 @@ class TicketChat extends Component
     }
 
     #[Layout('panel.master')]
-    public function render():View
+    public function render(): View
     {
         return view('livewire.panel.tickets.ticket-chat');
     }

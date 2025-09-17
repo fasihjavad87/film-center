@@ -31,7 +31,8 @@ class CountryCreate extends Component
             'code' => $this->code,
         ]);
 
-        return redirect()->route('panelAdmin.countries.index');
+//        return redirect()->route('panelAdmin.countries.index');
+        return $this->redirect(route('panelAdmin.countries.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

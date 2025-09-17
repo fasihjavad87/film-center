@@ -1,10 +1,13 @@
 /*@import "Vazirmatn-font-face.css";*/
 @import 'tailwindcss';
+@import "../../node_modules/preline/variants.css";
+@source "../../node_modules/preline/dist/*.js";
 @custom-variant dark (&:where(.dark, .dark *));
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -51,6 +54,27 @@ a{
 
 .badge-custom-panel-form{
     @apply border-[1.4px] py-0.5 font-medium rounded-md ;
+}
+
+.button-custom{
+    @apply w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer ;
+}
+.button-close-custom{
+    @apply w-max h-max px-18px py-2.5 bg-red-500 hover:bg-red-500/80 text-white rounded-md outline-none cursor-pointer ;
+}
+
+.button-delete-custom{
+    @apply w-max h-max px-18px py-[7px] bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer ;
+}
+.button-delete-close-custom{
+    @apply w-max h-max px-18px py-[7px] bg-red-500 hover:bg-red-500/80 text-white rounded-md outline-none cursor-pointer ;
+}
+
+.border-radius-chat-admin{
+    @apply rounded-r-lg rounded-l-lg rounded-b-lg rounded-bl-xs ;
+}
+.border-radius-chat-user{
+    @apply rounded-r-lg rounded-l-lg rounded-b-xs rounded-bl-lg ;
 }
 
 
@@ -182,86 +206,261 @@ a{
 
 
 
+
+
+/*.custom-select-wrapper {*/
+/*    position: relative;*/
+/*    width: 300px;*/
+/*    font-family: Arial, sans-serif;*/
+/*}*/
+
+/*.custom-select-ui {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 4px;*/
+/*    padding: 8px 12px;*/
+/*    cursor: pointer;*/
+/*    min-height: 40px;*/
+/*}*/
+
+/*.input-container {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    align-items: center;*/
+/*    width: 100%;*/
+/*    min-height: 24px; !* برای جلوگیری از تغییر ارتفاع *!*/
+/*}*/
+
+/*.selected-tags-container {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 5px;*/
+/*}*/
+
+/*.selected-tag {*/
+/*    background-color: #e0e0e0;*/
+/*    border-radius: 12px;*/
+/*    padding: 4px 8px;*/
+/*    font-size: 14px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.remove-tag {*/
+/*    margin-left: 5px;*/
+/*    cursor: pointer;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.search-input {*/
+/*    flex-grow: 1; !* این باعث میشه فیلد جستجو باقی فضای خالی رو پر کنه *!*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    padding: 4px 0;*/
+/*    font-size: 14px;*/
+/*    background: transparent;*/
+/*}*/
+
+/*.toggle-button svg {*/
+/*    width: 16px;*/
+/*    height: 16px;*/
+/*    color: #888;*/
+/*}*/
+
+/*.options-container {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    top: calc(100% + 5px); !* قرار گرفتن در پایین فیلد اصلی *!*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    background-color: #fff;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 4px;*/
+/*    max-height: 200px;*/
+/*    overflow-y: auto;*/
+/*    z-index: 10;*/
+/*}*/
+
+/*.option-item {*/
+/*    padding: 10px 12px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.option-item:hover, .option-item.selected {*/
+/*    background-color: #f0f0f0;*/
+/*}*/
+
+
+
 .custom-select-wrapper {
-    position: relative;
-    width: 300px;
-    font-family: Arial, sans-serif;
+    @apply relative w-full ;
+    /*position: relative;*/
+    /*width: 472px;*/
+    /*font-family: Arial, sans-serif;*/
+    direction: rtl; /* برای نمایش کلی از راست به چپ */
 }
 
 .custom-select-ui {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    min-height: 40px;
+    @apply flex justify-between items-center border-[1.4px] rounded-md dark:bg-gray-800 border-border-c px-3 py-2 cursor-pointer min-h-10 ;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 4px;*/
+    /*padding: 8px 12px;*/
+    /*cursor: pointer;*/
+    /*min-height: 40px;*/
 }
-
-.input-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100%;
-    min-height: 24px; /* برای جلوگیری از تغییر ارتفاع */
+.custom-select-wrapper.open .custom-select-ui{
+    @apply border-blue-c dark:border-yellow-c ;
 }
 
 .selected-tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+    @apply flex flex-wrap items-center gap-1.5 grow flex-row-reverse content-start justify-end ;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*align-items: center;*/
+    /*gap: 5px;*/
+    /*flex-grow: 1;*/
+    /*flex-direction: row-reverse;*/
+    /*align-content: flex-start; !* این خط را اضافه کنید *!*/
+    /*justify-content: flex-end; !* این خط را اضافه کنید *!*/
 }
 
 .selected-tag {
-    background-color: #e0e0e0;
-    border-radius: 12px;
-    padding: 4px 8px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
+    @apply border-[1.4px] border-blue-c dark:border-yellow-c rounded-4xl py-1 pr-2.5 pl-[5px] gap-x-[5px]  text-sm flex items-center ;
+    /*background-color: #e0e0e0;*/
+    /*border-radius: 12px;*/
+    /*padding: 4px 8px;*/
+    /*font-size: 14px;*/
+    /*display: flex;*/
+    /*align-items: center;*/
 }
 
 .remove-tag {
-    margin-left: 5px;
-    cursor: pointer;
-    font-weight: bold;
+    @apply text-10 bg-blue-c dark:bg-yellow-c text-white dark:text-black py-1 px-[9px] flex items-center justify-center rounded-full cursor-pointer font-bold ;
+    /*cursor: pointer;*/
+    /*font-weight: bold;*/
 }
 
 .search-input {
-    flex-grow: 1; /* این باعث میشه فیلد جستجو باقی فضای خالی رو پر کنه */
-    border: none;
-    outline: none;
-    padding: 4px 0;
-    font-size: 14px;
-    background: transparent;
+    @apply border-none outline-none bg-transparent py-1 text-sm min-w-5 grow ;
+    /*border: none;*/
+    /*outline: none;*/
+    /*background: transparent;*/
+    /*padding: 4px 0;*/
+    /*font-size: 14px;*/
+    /*min-width: 20px;*/
+    /*flex-grow: 1; !* این ویژگی را برگردان تا فضا را پر کند *!*/
 }
 
 .toggle-button svg {
-    width: 16px;
-    height: 16px;
-    color: #888;
+    @apply w-4 h-4 text-gray-400 ;
+    /*width: 16px;*/
+    /*height: 16px;*/
+    /*color: #888;*/
 }
 
 .options-container {
-    display: none;
-    position: absolute;
-    top: calc(100% + 5px); /* قرار گرفتن در پایین فیلد اصلی */
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 10;
+    @apply hidden absolute left-0 right-0 px-2 py-1.5 flex-col gap-y-1 bg-white dark:bg-gray-800 border border-border-c rounded-sm max-h-[200px] overflow-y-auto z-10 ;
+    /*display: none;*/
+    /*position: absolute;*/
+    top: calc(100% + 5px);
+    /*left: 0;*/
+    /*right: 0;*/
+    /*background-color: #fff;*/
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 4px;*/
+    /*max-height: 200px;*/
+    /*overflow-y: auto;*/
+    /*z-index: 10;*/
 }
 
 .option-item {
-    padding: 10px 12px;
-    cursor: pointer;
+    @apply py-2.5 px-3 cursor-pointer rounded-lg ;
+    /*padding: 10px 12px;*/
+    /*cursor: pointer;*/
 }
 
 .option-item:hover, .option-item.selected {
-    background-color: #f0f0f0;
+    @apply bg-gray-200 dark:bg-gray-700 text-blue-c dark:text-yellow-c ;
+    /*background-color: #f0f0f0;*/
 }
+
+
+
+.radio-wrapper {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*margin-bottom: 8px;*/
+    @apply flex items-center mb-2 gap-x-1 ;
+}
+
+.radio-wrapper input[type="radio"] {
+    /*border: 2px solid #e5e7eb; !* border-gray-200 *!*/
+    transition: all 0.2s ease;
+    @apply w-6 h-6 mt-0.5 appearance-none rounded-full cursor-pointer relative bg-white border-[1.4px] border-border-c ;
+}
+
+/* وقتی فوکوس شد */
+.radio-wrapper input[type="radio"]:focus {
+    @apply outline-hidden focus:ring-blue-c  dark:focus:ring-yellow-c;
+    /*outline: none;*/
+    /*box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); !* focus:ring-blue-500 *!*/
+}
+
+/* وقتی انتخاب شد */
+.radio-wrapper input[type="radio"]:checked {
+    @apply bg-blue-c dark:bg-yellow-c ;
+    /*border-color: #3b82f6; !* آبی *!*/
+}
+
+/* دایره سفید وسط */
+.radio-wrapper input[type="radio"]:checked::after {
+    @apply absolute top-1/2 left-1/2 w-2 h-2 bg-white dark:bg-black rounded-full ;
+    content: "";
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*width: 8px;*/
+    /*height: 8px;*/
+    /*background: white;*/
+    /*border-radius: 50%;*/
+    transform: translate(-50%, -50%);
+}
+
+/* حالت غیرفعال */
+.radio-wrapper input[type="radio"]:disabled {
+    /*opacity: 0.5;*/
+    /*pointer-events: none;*/
+    @apply opacity-50 pointer-events-none ;
+}
+
+/* حالت dark mode */
+/*@media (prefers-color-scheme: dark) {*/
+/*    .radio-wrapper input[type="radio"] {*/
+/*        background-color: #1f2937; !* dark:bg-neutral-800 *!*/
+/*        border-color: #374151;     !* dark:border-neutral-700 *!*/
+/*    }*/
+/*    .radio-wrapper input[type="radio"]:checked {*/
+/*        background-color: #3b82f6;*/
+/*        border-color: #3b82f6;*/
+/*    }*/
+/*}*/
+
+/* استایل لیبل */
+.radio-wrapper label {
+    @apply text-sm text-black dark:text-white ;
+    /*margin-left: 8px;*/
+    /*font-size: 14px;*/
+    /*color: #6b7280; !* text-gray-500 *!*/
+}
+
+/*@media (prefers-color-scheme: dark) {*/
+/*    .radio-wrapper label {*/
+/*        color: #9ca3af; !* dark:text-neutral-400 *!*/
+/*    }*/
+/*}*/
+

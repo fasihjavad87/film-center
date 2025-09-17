@@ -1,37 +1,55 @@
-<div x-data="{ open: false }" class="relative w-72">
-    <!-- input برای سرچ -->
-    <input type="text"
-           wire:model="search"
-           @focus="open = true"
-           placeholder="جستجوی دسته بندی..."
-           class="w-full border rounded-lg p-2" />
+<div class="mb-4" wire:ignore>
+    @if($label)
+        <label for="{{ $name }}" class="block text-sm font-medium text-black dark:text-white">
+            {{ $label }}
+            @if($required)
+                <span class="text-red-500">*</span>
+            @endif
+        </label>
+    @endif
 
-    <!-- لیست نتایج -->
-    <div x-show="open" @click.away="open = false"
-         class="absolute w-full bg-white border rounded-lg mt-1 max-h-48 overflow-y-auto z-10">
-        @forelse($categories as $category)
-            <div wire:click="toggleCategory({{ $category['id'] }})"
-                 class="p-2 cursor-pointer hover:bg-gray-100 flex justify-between">
-                <span>{{ $category['name'] }}</span>
-                @if(in_array($category['id'], $selected))
-                    ✅
-                @endif
+
+    <div class="custom-select-wrapper mt-1" data-model="{{ $name }}">
+        <select id="my-select" @if($multiple) multiple @endif  style="display: none;">
+            @if(!$multiple)
+                <option value="" @if(empty($value)) selected @endif>-- انتخاب کنید --</option>
+            @endif
+            @foreach($model as $item)
+                @php
+                    $val = is_object($item) ? $item->$t_id : $item;
+                    $text = is_object($item) ? $item->$t_name : $item;
+                @endphp
+                <option value="{{ $val }}"
+                        @if($multiple)
+                            @if(collect($value)->contains($val)) selected @endif
+                        @else
+                            @if($value == $val) selected @endif
+                    @endif
+                >
+                    {{ $text }}
+                </option>
+            @endforeach
+        </select>
+
+        <div class="custom-select-ui">
+            <div class="selected-tags-container">
+                <input type="text" id="search-input" class="search-input" placeholder="">
             </div>
-        @empty
-            <div class="p-2 text-gray-500">موردی یافت نشد</div>
-        @endforelse
+
+            <div class="toggle-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m7 15 5 5 5-5"/>
+                    <path d="m7 9 5-5 5 5"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="options-container">
+        </div>
     </div>
 
-    <!-- انتخاب‌شده‌ها -->
-    <div class="flex flex-wrap gap-2 mt-2">
-        @foreach($selected as $id)
-            @php $cat = \App\Models\Category::find($id); @endphp
-            <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg text-sm">
-                {{ $cat->name }}
-            </span>
-        @endforeach
-    </div>
-
-    <!-- مقدار نهایی (برای فرم) -->
-    <input type="hidden" name="categories" value="{{ implode(',', $selected) }}">
+    @error($name)
+    <span class="text-red-500 text-sm mt-1 ">{{ $message }}</span>
+    @enderror
 </div>

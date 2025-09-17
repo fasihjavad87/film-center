@@ -13,28 +13,17 @@ class UserList extends Component
     use WithPagination;
 
     public $search = '';
-    public $showDeleteModal = false;
     public $userIdToDelete = null;
-//    public $users; // Property برای ذخیره لیست کاربران
 
-    public function mount(): void
-    {
-//        $this->users = User::all(); // دریافت تمام کاربران از دیتابیس
-    }
 
     public function openDeleteModal($userId)
     {
-        $this->showDeleteModal = true;
         $this->userIdToDelete = $userId;
+        $this->dispatch('show-delete-modal');
     }
-    public function closeDeleteModal()
-    {
-        $this->showDeleteModal = false;
-        $this->userIdToDelete = null;
-    }
+
     public function delete()
     {
-        // منطق حذف
         $user = User::find($this->userIdToDelete);
         if ($user) {
             $user->delete();
@@ -44,7 +33,7 @@ class UserList extends Component
                 'duration' => 5000
             ]);
         }
-        $this->closeDeleteModal();
+        $this->dispatch('close-trailer-modal');
         $this->resetPage();
     }
 

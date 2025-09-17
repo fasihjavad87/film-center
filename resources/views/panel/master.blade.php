@@ -15,7 +15,7 @@
     class="fixed inset-0 bg-black/50 z-40 md:hidden"
     x-transition.opacity
 ></div>
-<section class="fixed top-0 left-0 w-full h-screen bg-white dark:bg-gray-700 dark:text-white md:pr-app-sidebar-w pt-app-header-h"><div class="p-5 md:p-7">
+<section class="fixed left-0 w-full h-screen bg-white overflow-y-auto dark:bg-gray-700 dark:text-white md:pr-app-sidebar-w pb-app-header-h top-app-header-h"><div class="p-5 md:p-7">
         {{$slot}}
     </div></section>
 @livewire('panel.sidebar')

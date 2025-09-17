@@ -52,7 +52,8 @@ class CategoryEdite extends Component
         $this->category->save();
 
         session()->flash('success', 'دسته‌بندی با موفقیت ویرایش شد.');
-        $this->redirect(route('panelAdmin.categories.index'));
+//        $this->redirect(route('panelAdmin.categories.index'));
+        return $this->redirect(route('panelAdmin.categories.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

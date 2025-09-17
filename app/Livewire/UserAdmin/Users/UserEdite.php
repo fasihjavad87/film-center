@@ -78,7 +78,8 @@ class UserEdite extends Component
         $this->user->save();
 
         session()->flash('success', 'کاربر با موفقیت ویرایش شد.');
-        return redirect()->route('panelAdmin.users.index');
+//        return redirect()->route('panelAdmin.users.index');
+        return $this->redirect(route('panelAdmin.users.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

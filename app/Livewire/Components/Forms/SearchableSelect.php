@@ -5,37 +5,28 @@ namespace App\Livewire\Components\Forms;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Modelable;
 use Livewire\Component;
 
 class SearchableSelect extends Component
 {
-    public $search = '';
-    public $selected = []; // دسته‌بندی‌های انتخاب شده
-    public $categories = [];
+    #[Modelable] // باید این ویژگی (attribute) را اضافه کنید
+    public $value;
+    public $label;
+    public $model;
+    public $name;
+    public $required = false;
+    public $t_name;
+    public $t_id;
 
-    public function mount($selected = [])
-    {
-        $this->selected = $selected;
-    }
+    public $multiple = true;
 
-    public function updatedSearch()
+    public function updated($name, $value)
     {
-        $this->categories = Category::query()
-            ->where('name', 'like', '%' . $this->search . '%')
-            ->limit(10)
-            ->get()
-            ->toArray();
-    }
-
-    public function toggleCategory($id)
-    {
-        if (in_array($id, $this->selected)) {
-            $this->selected = array_diff($this->selected, [$id]);
-        } else {
-            $this->selected[] = $id;
+        if ($name === $this->name) {
+            $this->value = $value;
         }
     }
-
 
     public function render(): View
     {

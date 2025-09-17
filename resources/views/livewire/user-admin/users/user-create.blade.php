@@ -239,10 +239,11 @@
 
 
         <div class="flex justify-end items-center">
-            <button type="button" wire:click="save"
-                    class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">
-                ایجاد کاربر
-            </button>
+            <a href="#" wire:click.prevent="save" class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">ذخیره</a>
+{{--            <button type="button" wire:click="save"--}}
+{{--                    class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">--}}
+{{--                ایجاد کاربر--}}
+{{--            </button>--}}
         </div>
     </form>
 </div>

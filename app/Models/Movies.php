@@ -25,10 +25,30 @@ class Movies extends Model
     ];
 
 
+//    public function statusLabel(): string
+//    {
+//        return MoviesStatus::from($this->status)->label();
+//    }
+
     public function statusLabel(): string
     {
-        return MoviesStatus::from($this->status)->label();
+        return match($this->status) {
+            'active' => 'فعال',
+            'inactive' => 'غیر فعال',
+            default => 'نامشخص',
+        };
     }
+
+    // متد برای کلاس CSS وضعیت
+    public function statusClasses(): string
+    {
+        return match($this->status) {
+            'active' => 'bg-green-100 text-green-800 border-green-400/30 px-2 badge-custom-panel-form',
+            'inactive' => 'bg-red-100 text-red-800 border-red-400/30 px-2 badge-custom-panel-form',
+            default => 'bg-gray-200 text-gray-600 px-2 badge-custom-panel-form',
+        };
+    }
+
 
     // تابعی که می‌خوایم برای ساخت خودکار اسلاگ
     public static function generateSlug($eName): string
@@ -76,6 +96,17 @@ class Movies extends Model
                 // حذف رکورد جزئیات
                 $movie->details->delete();
             }
+
+            // حذف تریلرها
+            $movie->trailers()->each(function ($trailer) {
+                $trailer->delete();
+            });
+
+            // حذف رکوردهای pivot از کشورها
+            $movie->countries()->detach();
+
+            // حذف رکوردهای pivot از دسته‌بندی‌ها
+            $movie->categories()->detach();
         });
 
     }

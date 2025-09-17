@@ -20,7 +20,7 @@ Route::get('/', Panel::class)->name('panel.dashboard');
 Route::name('panel.')->middleware('auth')->group(function () {
     Route::get('/tickets', TicketsList::class)->name('tickets.index');
     Route::get('/tickets/create', TicketCreate::class)->name('tickets.create');
-    Route::get('/tickets/{ticket}', TicketChat::class)->name('tickets.show');
+    Route::get('/tickets/{ticketId}', TicketChat::class)->name('tickets.show');
 });
 //Route::get('/tickets/{ticket}', function ($ticket) {
 //    return view('livewire.panel.tickets.ticket-chat', ['ticketId' => $ticket]);
