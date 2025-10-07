@@ -13,15 +13,18 @@ class UserSoftDelete extends Component
 
     use WithPagination;
 
-    public $showRestoreModal = false; // برای پاپ‌آپ بازگردانی
+//    public $showRestoreModal = false; // برای پاپ‌آپ بازگردانی
     public $userIdToDelete = null; // برای حذف دائم
     public $userIdToRestore = null; // برای بازگردانی
+    public $userNameToDelete = '';
+    public $userNameToRestore = '';
     public $search = '';
 
 
-    public function openDeleteModal($userId)
+    public function openDeleteModal($userId , $userName)
     {
         $this->userIdToDelete = $userId;
+        $this->userNameToDelete = $userName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -40,11 +43,14 @@ class UserSoftDelete extends Component
         }
         $this->dispatch('close-delete-modal');
         $this->resetPage();
+        $this->userIdToDelete = null;
+        $this->userNameToDelete = '';
     }
 
-    public function openRestoreModal($userId)
+    public function openRestoreModal($userId , $userName)
     {
         $this->userIdToRestore = $userId;
+        $this->userNameToRestore = $userName;
         $this->dispatch('show-restore-modal');
     }
 
@@ -62,6 +68,8 @@ class UserSoftDelete extends Component
         }
         $this->dispatch('close-restore-modal');
         $this->resetPage();
+        $this->userIdToRestore = null;
+        $this->userNameToRestore = '';
     }
 
 

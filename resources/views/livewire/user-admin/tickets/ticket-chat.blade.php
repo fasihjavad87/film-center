@@ -25,7 +25,7 @@
         </span>
                 </div>
                 <!-- 🟢 دکمه بازگشت در کنار status ها قرار گرفته است -->
-                <a href="{{ route('panelAdmin.tickets.index') }}" wire:navigate
+                <a href="{{ route('panelAdmin.tickets.index') }}"
                    class="block p-3px border-[1.3px] border-blue-c/30 dark:border-yellow-c/30 rounded-md text-blue-c dark:text-yellow-c hover:bg-blue-c/10 dark:hover:bg-yellow-c/10 transition-colors">
                     <svg class="w-[26px] h-[26px] fill-transparent">
                         <use xlink:href="#icon-alt-arrow-left"></use>

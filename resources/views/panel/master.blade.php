@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('panel/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/css/Vazirmatn-font-face.css') }}">
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{$title ?? "پنل مدیریت"}}</title>
 </head>
 <body dir="rtl" x-data="{ sidebarOpen: false }">
@@ -20,8 +20,9 @@
     </div></section>
 @livewire('panel.sidebar')
 @livewire('panel.header')
+@livewire('components.toast-notification')
 
-<script src="../../js/app.js"></script>
+{{--<script src="../../js/app.js"></script>--}}
 <script>
     (() => {
         let theme = localStorage.getItem('theme');

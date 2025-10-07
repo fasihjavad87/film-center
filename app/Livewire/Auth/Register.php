@@ -32,7 +32,7 @@ class Register extends Component
         ]);
 
         // بعد از ثبت‌نام بفرست به صفحه لاگین با پیغام موفقیت
-        return redirect()->route('auth.login')
+        return redirect()->route('login')
             ->with('success', 'ثبت‌نام با موفقیت انجام شد. لطفاً وارد شوید.');
     }
 

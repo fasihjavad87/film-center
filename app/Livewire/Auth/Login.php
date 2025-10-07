@@ -36,7 +36,7 @@ class Login extends Component
             'remember_me' => $this->rememberMe
         ]);
 
-        return redirect()->route('auth.verify.code');
+        return redirect()->route('verify.code');
     }
 
     #[Layout('layouts.auth'),Title('ورود')]

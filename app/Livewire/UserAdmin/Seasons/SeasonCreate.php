@@ -48,8 +48,8 @@ class SeasonCreate extends Component
             'status' => $this->status,
         ]);
 
-//        return redirect()->route('panelAdmin.seasons.index');
-        return $this->redirect(route('panelAdmin.seasons.index'), navigate: true);
+        return redirect()->route('panelAdmin.seasons.index');
+//        return $this->redirect(route('panelAdmin.seasons.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

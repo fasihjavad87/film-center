@@ -56,8 +56,8 @@ class UserCreate extends Component
             $user->update(['avatar' => $path]);
         }
 
-//        return redirect()->route("panelAdmin.users.index");
-        return $this->redirect(route('panelAdmin.users.index'), navigate: true);
+        return redirect()->route("panelAdmin.users.index");
+//        return $this->redirect(route('panelAdmin.users.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

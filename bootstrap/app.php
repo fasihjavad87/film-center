@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->middleware(['web', 'auth'])
                 ->group(base_path('routes/panel.php'));
             Route::prefix('user-admin')
-                ->middleware(['web', 'auth'])
+                ->middleware(['web', 'auth' , 'panel_admin'])
                 ->group(base_path('routes/panel-admin.php'));
 
 //            Route Auth
@@ -23,7 +23,13 @@ return Application::configure(basePath: dirname(__DIR__))
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->append(\App\Http\Middleware\Authenticate::class);
+        $middleware->alias([
+            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+            'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+            'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+            'panel_admin' => \App\Http\Middleware\AdminMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

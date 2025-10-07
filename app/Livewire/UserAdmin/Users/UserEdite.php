@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
 class UserEdite extends Component
 {
@@ -25,6 +26,7 @@ class UserEdite extends Component
     public $remove_password = false;
     public $avatar;        // برای آپلود جدید
     public $currentAvatar;
+    public $selectedRoles = [];
 
     public function mount(User $user): void
     {
@@ -36,6 +38,7 @@ class UserEdite extends Component
         // آواتار موجود
 //        $this->avatar = $user->avatar;
         $this->currentAvatar = $user->avatar;
+        $this->selectedRoles = $user->roles->pluck('name')->toArray();
     }
 
     protected function rules()
@@ -47,6 +50,7 @@ class UserEdite extends Component
             'is_admin' => 'boolean',
             'password' => $this->remove_password ? 'nullable' : 'nullable|min:8',
             'avatar'   => 'nullable|image|max:2048',
+            'selectedRoles' => 'required|array',
         ];
     }
 
@@ -74,17 +78,21 @@ class UserEdite extends Component
             // اگر تصویری آپلود نشد → همون قبلی باقی بمونه
             $this->user->avatar = $this->currentAvatar;
         }
+        $this->user->syncRoles($this->selectedRoles);
 
         $this->user->save();
 
         session()->flash('success', 'کاربر با موفقیت ویرایش شد.');
-//        return redirect()->route('panelAdmin.users.index');
-        return $this->redirect(route('panelAdmin.users.index'), navigate: true);
+        return redirect()->route('panelAdmin.users.index');
+//        return $this->redirect(route('panelAdmin.users.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]
     public function render():View
     {
-        return view('livewire.user-admin.users.user-edite');
+        $this->dispatch('init-custom-select');
+        return view('livewire.user-admin.users.user-edite',[
+            'allRoles' => Role::all(),
+        ]);
     }
 }

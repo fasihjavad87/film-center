@@ -14,11 +14,13 @@ class UserList extends Component
 
     public $search = '';
     public $userIdToDelete = null;
+    public $userNameToDelete = '';
 
 
-    public function openDeleteModal($userId)
+    public function openDeleteModal($userId , $userName)
     {
         $this->userIdToDelete = $userId;
+        $this->userNameToDelete = $userName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -35,12 +37,15 @@ class UserList extends Component
         }
         $this->dispatch('close-trailer-modal');
         $this->resetPage();
+        $this->userIdToDelete = null;
+        $this->userNameToDelete = '';
     }
 
     #[Layout('panel-admin.master')]
     public function render(): View
     {
         $users = User::query()
+            ->with('roles')
             ->when($this->search, function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%')
                     ->orWhere('email', 'like', '%' . $this->search . '%');

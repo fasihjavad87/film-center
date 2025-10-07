@@ -127,8 +127,8 @@ class SeriesEdite extends Component
             'poster' => $posterPath,
         ]);
 
-//        return redirect()->route('panelAdmin.series.index');
-        return $this->redirect(route('panelAdmin.series.index'), navigate: true);
+        return redirect()->route('panelAdmin.series.index');
+//        return $this->redirect(route('panelAdmin.series.index'), navigate: true);
     }
 
 

@@ -16,12 +16,14 @@ class MovieList extends Component
 
     public $search = '';
     public $movieIdToDelete = null;
+    public $movieNameToDelete = '';
 
 
 
-    public function openDeleteModal($movieId)
+    public function openDeleteModal($movieId , $movieName)
     {
         $this->movieIdToDelete = $movieId;
+        $this->movieNameToDelete = $movieName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -38,6 +40,8 @@ class MovieList extends Component
         }
         $this->dispatch('close-delete-modal');
         $this->resetPage();
+        $this->movieIdToDelete = null;
+        $this->movieNameToDelete = '';
     }
 
 

@@ -91,8 +91,8 @@ class SeriesCreate extends Component
             'poster' => $this->poster->store('poster_movies', 'filament'),
         ]);
 
-//        return redirect()->route('panelAdmin.movies.index');
-        return $this->redirect(route('panelAdmin.series.index'), navigate: true);
+        return redirect()->route('panelAdmin.series.index');
+//        return $this->redirect(route('panelAdmin.series.index'), navigate: true);
 
     }
 

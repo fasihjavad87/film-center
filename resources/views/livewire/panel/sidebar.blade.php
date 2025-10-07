@@ -23,16 +23,16 @@
             <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-save"></use>
                     </svg> <span class="pt-3px">علاقه مندی ها</span></a></li>
-            <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panel.purchase-history.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panel.purchase-history.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-payment-history"></use>
                     </svg> <span class="pt-3px">سوابق خرید</span></a></li>
-            <li><a href="{{ route('panel.tickets.index') }}" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panel.tickets.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panel.tickets.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-ticket"></use>
                     </svg> <span class="pt-3px">تیکت ها</span></a></li>
             <li><a href="#" class="panel-user-item-sidebar justify-between"><div class="flex gap-x-2.5"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-wallet"></use>
                     </svg> <span>کیف پول</span></div><div class="flex gap-x-0.5"><span>0</span><span>تومان</span></div></a></li>
-            <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panel.user-profile.edit.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panel.user-profile.edit.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-profile"></use>
                     </svg> <span class="pt-3px">اطلاعات حساب</span></a></li>
             <li><a href="#" class="panel-user-item-sidebar relative">
@@ -45,10 +45,10 @@
                     <svg class="w-6 h-6 fill-transparent relative">
                         <use xlink:href="#icon-bell"></use>
                     </svg> <span class="pt-3px">اعلان ها</span></a></li>
-            <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panel.active-devices.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panel.active-devices.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-monitor-smartphone"></use>
                     </svg> <span class="pt-3px">دستگاه های فعال</span></a></li>
-            <li><a href="#" class="panel-user-item-sidebar"><svg class="w-6 h-6 fill-transparent">
+            <li><a href="{{ route('panel.plans.index') }}" class="panel-user-item-sidebar {{ request()->routeIs('panel.plans.index') ? 'panel-user-item-sidebar-active' : '' }}"><svg class="w-6 h-6 fill-transparent">
                         <use xlink:href="#icon-crown"></use>
                     </svg> <span class="pt-3px">خرید اشتراک</span></a></li>
             <hr class="w-full text-blue-c dark:text-yellow-c my-1">

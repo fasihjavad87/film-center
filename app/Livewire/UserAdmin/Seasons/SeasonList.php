@@ -15,12 +15,14 @@ class SeasonList extends Component
 
     public $search = '';
     public $seasonsIdToDelete = null;
+    public $seasonNameToDelete = '';
 
 
 
-    public function openDeleteModal($seasonsId)
+    public function openDeleteModal($seasonsId , $seasonName)
     {
         $this->seasonsIdToDelete = $seasonsId;
+        $this->seasonNameToDelete = $seasonName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -37,6 +39,8 @@ class SeasonList extends Component
         }
         $this->dispatch('close-delete-modal');
         $this->resetPage();
+        $this->seasonsIdToDelete = null;
+        $this->seasonNameToDelete = '';
     }
 
 

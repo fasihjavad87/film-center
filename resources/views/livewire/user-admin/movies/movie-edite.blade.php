@@ -333,12 +333,14 @@
             </div>
         </div>
 
-        <a href="#" wire:click.prevent="save" class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">ذخیره</a>
-{{--        <button type="submit"--}}
-{{--                class="button-custom">--}}
-{{--            ذخیره--}}
-{{--        </button>--}}
+{{--        <a href="#" wire:click.prevent="save"--}}
+{{--           class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">ذخیره</a>--}}
+        <button type="submit"
+                class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">
+            ویرایش
+        </button>
     </form>
-    <livewire:user-admin.relation-manager.trailer-manager :trailerable-id="$movie->id" trailerable-type="Movie" />
-
+    @if(auth()->user()->isAdmin('show-trailer'))
+        <livewire:user-admin.relation-manager.trailer-manager :trailerable-id="$movie->id" trailerable-type="Movie"/>
+    @endif
 </div>

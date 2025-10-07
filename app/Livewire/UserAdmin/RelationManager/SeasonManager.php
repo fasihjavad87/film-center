@@ -23,6 +23,7 @@ class SeasonManager extends Component
 
     // مدال‌ها
     public $deleteSeasonId = null;
+    public $seasonNameToDelete = '';
 
     public function mount($seasonableId)
     {
@@ -90,10 +91,11 @@ class SeasonManager extends Component
         $this->loadSeasons();
     }
 
-    public function openDeleteSeasonModal($id)
+    public function openDeleteSeasonModal($id , $seasonName)
     {
         $this->deleteSeasonId = $id;
-        $this->dispatch('show-delete-season-modal');
+        $this->seasonNameToDelete = $seasonName;
+        $this->dispatch('show-season-delete-modal');
     }
 
     public function deleteSeason()
@@ -104,8 +106,10 @@ class SeasonManager extends Component
             'message' => 'فصل حذف شد.',
             'duration' => 5000
         ]);
-        $this->dispatch('close-delete-season-modal');
+        $this->dispatch('close-season-delete-modal');
         $this->loadSeasons();
+        $this->deleteSeasonId = null;
+        $this->seasonNameToDelete = '';
     }
 
 

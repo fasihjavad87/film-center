@@ -138,8 +138,8 @@ class MovieEdite extends Component
             'poster' => $posterPath,
         ]);
 
-//        return redirect()->route('panelAdmin.movies.index');
-        return $this->redirect(route('panelAdmin.movies.index'), navigate: true);
+        return redirect()->route('panelAdmin.movies.index');
+//        return $this->redirect(route('panelAdmin.movies.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

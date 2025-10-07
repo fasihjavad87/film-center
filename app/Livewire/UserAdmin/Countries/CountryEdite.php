@@ -46,8 +46,8 @@ class CountryEdite extends Component
         $this->country->save();
 
         session()->flash('success', 'کشور با موفقیت ویرایش شد.');
-//        $this->redirect(route('panelAdmin.countries.index'));
-        return $this->redirect(route('panelAdmin.countries.index'), navigate: true);
+        $this->redirect(route('panelAdmin.countries.index'));
+//        return $this->redirect(route('panelAdmin.countries.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

@@ -37,8 +37,8 @@ class CategoryCreate extends Component
             'slug' => $this->slug,
         ]);
 
-//        return redirect()->route('panelAdmin.categories.index');
-        return $this->redirect(route('panelAdmin.categories.index'), navigate: true);
+        return redirect()->route('panelAdmin.categories.index');
+//        return $this->redirect(route('panelAdmin.categories.index'), navigate: true);
     }
 
     #[Layout('panel-admin.master')]

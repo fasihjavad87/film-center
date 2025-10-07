@@ -14,40 +14,14 @@ class CategoryList extends Component
     use WithPagination;
 
     public $search = '';
-//    public $showDeleteModal = false;
     public $categoryIdToDelete = null;
+    public $categoryNameToDelete = '';
 
 
-
-//    public function openDeleteModal($categoryId)
-//    {
-//        $this->showDeleteModal = true;
-//        $this->categoryIdToDelete = $categoryId;
-//    }
-//    public function closeDeleteModal()
-//    {
-//        $this->showDeleteModal = false;
-//        $this->categoryIdToDelete = null;
-//    }
-//    public function delete()
-//    {
-//        // منطق حذف
-//        $category = Category::find($this->categoryIdToDelete);
-//        if ($category) {
-//            $category->delete();
-//
-//            $this->dispatch('toast-notification', [
-//                'message' => 'دسته بندی حذف شد.',
-//                'duration' => 5000
-//            ]);
-//        }
-//        $this->closeDeleteModal();
-//        $this->resetPage();
-//    }
-
-    public function openDeleteModal($categoryId)
+    public function openDeleteModal($categoryId , $categoryName)
     {
         $this->categoryIdToDelete = $categoryId;
+        $this->categoryNameToDelete = $categoryName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -64,6 +38,8 @@ class CategoryList extends Component
         }
         $this->dispatch('close-delete-modal');
         $this->resetPage();
+        $this->categoryIdToDelete = null;
+        $this->categoryNameToDelete = '';
     }
 
 

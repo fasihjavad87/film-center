@@ -25,6 +25,7 @@ class TrailerManager extends Component
 
     // مدال‌ها
     public $deleteTrailerId = null;
+    public $trailerNameToDelete = '';
 
     public function mount($trailerableId, $trailerableType)
     {
@@ -111,9 +112,10 @@ class TrailerManager extends Component
         $this->loadTrailers();
     }
 
-    public function openDeleteModal($id)
+    public function openDeleteModal($id , $trailerName)
     {
         $this->deleteTrailerId = $id;
+        $this->trailerNameToDelete = $trailerName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -127,6 +129,8 @@ class TrailerManager extends Component
         ]);
         $this->dispatch('close-delete-modal');
         $this->loadTrailers();
+        $this->deleteTrailerId = null;
+        $this->trailerNameToDelete = '';
     }
 
 

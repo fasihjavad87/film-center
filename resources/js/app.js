@@ -1,5 +1,5 @@
 import './bootstrap';
-import 'preline'
+import 'preline';
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     // پیدا کردن تمام کامپوننت‌ها با کلاس .custom-select-wrapper
@@ -384,11 +384,59 @@ document.addEventListener('livewire:init', () => {
     });
 });
 
-// document.addEventListener('livewire:load', () => {
-//     Livewire.on('season-saved', event => {
-//         window.location.href = event.url;
-//     });
-// });
 
+
+// --- Copy to Clipboard ---
+function copyTextById(elementId) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+
+    const textToCopy = el.textContent.trim();
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => showCopiedState())
+            .catch(() => fallbackCopy(textToCopy));
+    } else {
+        fallbackCopy(textToCopy);
+    }
+}
+
+function fallbackCopy(text) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = 0;
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+        document.execCommand("copy");
+        showCopiedState();
+    } catch (err) {
+        console.error("Fallback copy failed", err);
+    }
+    document.body.removeChild(textarea);
+}
+
+function showCopiedState() {
+    const copyIcon = document.getElementById("copyIcon");
+    const copiedIcon = document.getElementById("copiedIcon");
+
+    if (copyIcon && copiedIcon) {
+        // تغییر آیکون‌ها
+        copyIcon.classList.add("hidden");
+        copiedIcon.classList.remove("hidden");
+
+        // بعد از ۴ ثانیه برگرده به حالت اول
+        setTimeout(() => {
+            copyIcon.classList.remove("hidden");
+            copiedIcon.classList.add("hidden");
+        }, 4000);
+    }
+}
+
+// دسترسی global
+window.copyTextById = copyTextById;
 
 

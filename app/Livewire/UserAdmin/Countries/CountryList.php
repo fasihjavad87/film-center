@@ -14,14 +14,15 @@ class CountryList extends Component
     use WithPagination;
 
     public $search = '';
-    public $showDeleteModal = false;
     public $countryIdToDelete = null;
+    public $countryNameToDelete = '';
 
 
 
-    public function openDeleteModal($countryId)
+    public function openDeleteModal($countryId , $countryName)
     {
         $this->countryIdToDelete = $countryId;
+        $this->countryNameToDelete = $countryName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -38,6 +39,8 @@ class CountryList extends Component
         }
         $this->dispatch('close-delete-modal');
         $this->resetPage();
+        $this->countryIdToDelete = null;
+        $this->countryNameToDelete = '';
     }
 
     #[Layout('panel-admin.master')]

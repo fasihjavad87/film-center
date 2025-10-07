@@ -25,6 +25,7 @@ class EpisodeManager extends Component
 
     // مدال‌ها
     public $deleteEpisodeId = null;
+    public $episodeNameToDelete = '';
 
     public function mount($episodeableId)
     {
@@ -109,10 +110,11 @@ class EpisodeManager extends Component
         $this->loadEpisodes();
     }
 
-    public function openDeleteModal($id)
+    public function openDeleteModal($id , $episodeName)
     {
         $this->deleteEpisodeId = $id;
-        $this->dispatch('show-delete-modal');
+        $this->episodeNameToDelete = $episodeName;
+        $this->dispatch('show-episode-delete-modal');
     }
 
     public function delete()
@@ -123,8 +125,10 @@ class EpisodeManager extends Component
             'message' => 'قسمت حذف شد.',
             'duration' => 5000
         ]);
-        $this->dispatch('close-delete-modal');
+        $this->dispatch('close-episode-delete-modal');
         $this->loadEpisodes();
+        $this->deleteEpisodeId = null;
+        $this->episodeNameToDelete = '';
     }
 
 

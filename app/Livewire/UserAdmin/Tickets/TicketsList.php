@@ -14,6 +14,7 @@ class TicketsList extends Component
 
     public $statusFilter = 'all'; // وضعیت انتخاب شده
     public $deleteTicketId = null;
+    public $ticketNameToDelete = '';
 
     protected $queryString = ['statusFilter']; // حفظ فیلتر در URL
 
@@ -36,10 +37,11 @@ class TicketsList extends Component
     }
 
     // باز کردن مودال حذف
-    public function openDeleteTicketModal($id): void
+    public function openDeleteTicketModal($id , $ticketName): void
     {
         $this->deleteTicketId = $id;
-        $this->dispatch('show-delete-ticket-modal');
+        $this->ticketNameToDelete = $ticketName;
+        $this->dispatch('show-delete-modal');
     }
 
     // حذف تیکت
@@ -54,7 +56,10 @@ class TicketsList extends Component
             'duration' => 3000
         ]);
 
-        $this->dispatch('close-delete-ticket-modal');
+        $this->dispatch('close-trailer-modal');
+        $this->resetPage();
+        $this->deleteTicketId = null;
+        $this->ticketNameToDelete = '';
     }
 
     #[Layout('panel-admin.master')]

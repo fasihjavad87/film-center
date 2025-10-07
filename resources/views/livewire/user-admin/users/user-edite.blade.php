@@ -47,6 +47,19 @@
             wire:model.defer="is_admin"
         />
 
+        <div>
+            <livewire:components.forms.searchable-select
+                required
+                label="نقش ها"
+                :model="$allRoles"
+                t_name="name"
+                name="selectedRoles"
+                wire:model="selectedRoles"
+                t_id="name"
+            />
+            @error('selectedRoles') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
+
         <!-- رمز عبور -->
         <x-forms.password-field
             name="password"
@@ -132,11 +145,11 @@
 
         <!-- دکمه ذخیره -->
         <div class="flex justify-end items-center">
-            <a href="#" wire:click.prevent="save" class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">ویرایش</a>
-{{--            <button type="submit"--}}
-{{--                    class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">--}}
-{{--                ذخیره تغییرات--}}
-{{--            </button>--}}
+{{--            <a href="#" wire:click.prevent="save" class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">ویرایش</a>--}}
+            <button type="submit"
+                    class="w-max h-max px-18px py-2.5 bg-blue-c hover:bg-blue-c/80 text-white dark:bg-yellow-c dark:hover:bg-yellow-c/80 dark:text-black rounded-md outline-none cursor-pointer">
+                ویرایش
+            </button>
         </div>
     </form>
 </div>

@@ -28,7 +28,7 @@
         <!-- Login Link -->
         <div class="parent-link-register-login">
             <p class="question-account-register-login">حساب کاربری دارید؟</p>
-            <a href="{{ route('auth.login') }}" class="answer-register-login">ورود</a>
+            <a href="{{ route('login') }}" class="answer-register-login">ورود</a>
         </div>
     </form>
 </div>

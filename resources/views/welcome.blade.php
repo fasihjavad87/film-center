@@ -29,7 +29,7 @@
     <a href="{{ route('logout') }}">خروج</a>
 @endauth
 @guest
-    <a href="{{ route('auth.register') }}">register</a>
+    <a href="{{ route('register') }}">register</a>
 @endguest
 </body>
 </html>

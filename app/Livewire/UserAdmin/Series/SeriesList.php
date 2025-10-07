@@ -16,12 +16,14 @@ class SeriesList extends Component
 
     public $search = '';
     public $seriesIdToDelete = null;
+    public $seriesNameToDelete = '';
 
 
 
-    public function openDeleteModal($seriesId)
+    public function openDeleteModal($seriesId , $seriesName)
     {
         $this->seriesIdToDelete = $seriesId;
+        $this->seriesNameToDelete = $seriesName;
         $this->dispatch('show-delete-modal');
     }
 
@@ -38,6 +40,8 @@ class SeriesList extends Component
         }
         $this->dispatch('close-delete-modal');
         $this->resetPage();
+        $this->seriesIdToDelete = null;
+        $this->seriesNameToDelete = '';
     }
 
     #[Layout('panel-admin.master')]

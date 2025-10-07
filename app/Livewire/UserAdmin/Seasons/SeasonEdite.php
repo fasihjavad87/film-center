@@ -74,7 +74,8 @@ class SeasonEdite extends Component
         ]);
 
         // emit یک event به فرانت‌اند
-        return $this->redirect(route('panelAdmin.seasons.index'), navigate: true);
+        return redirect()->route('panelAdmin.seasons.index');
+//        return $this->redirect(route('panelAdmin.seasons.index'), navigate: true);
     }
 
 

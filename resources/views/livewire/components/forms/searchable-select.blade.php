@@ -16,8 +16,8 @@
             @endif
             @foreach($model as $item)
                 @php
-                    $val = is_object($item) ? $item->$t_id : $item;
-                    $text = is_object($item) ? $item->$t_name : $item;
+                    $val = is_object($item) ? $item->{$t_id} : $item;
+                    $text = is_object($item) ? $item->{$t_name} : $item;
                 @endphp
                 <option value="{{ $val }}"
                         @if($multiple)

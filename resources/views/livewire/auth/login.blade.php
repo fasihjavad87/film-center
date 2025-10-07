@@ -34,7 +34,7 @@
         <!-- Login Link -->
         <div class="parent-link-register-login">
             <p class="question-account-register-login">حسابی ندارید؟</p>
-            <a href="{{ route('auth.register') }}" class="answer-register-login">اکنون ثبت نام کنید!</a>
+            <a href="{{ route('register') }}" class="answer-register-login">اکنون ثبت نام کنید!</a>
         </div>
     </form>
 </div>
